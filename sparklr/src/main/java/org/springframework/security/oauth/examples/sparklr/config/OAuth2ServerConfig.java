@@ -154,7 +154,14 @@ public class OAuth2ServerConfig {
 		                .authorizedGrantTypes("implicit")
 		                .authorities("ROLE_CLIENT")
 		                .scopes("read", "write", "trust")
-		                .autoApprove(true);
+		                .autoApprove(true)
+                    .and()
+                    .withClient("webapp")
+                        .resourceIds(SPARKLR_RESOURCE_ID)
+                        .authorizedGrantTypes("authorization_code", "implicit")
+                        .authorities("ROLE_CLIENT")
+                        .scopes("read", "write")
+                        .secret("secret");
 			// @formatter:on
 		}
 
